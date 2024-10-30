@@ -8,6 +8,9 @@ export default {
     extend: {
       colors: {
         "medium-grey": "#364153"
+      },
+      backgroundImage: {
+        searchBarBackground: "url('./assets/images/searchBarBackground.png')"
       }
     },
   },

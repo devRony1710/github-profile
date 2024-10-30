@@ -1,10 +1,13 @@
 import './App.css'
+import { GithubSearchBarHeader } from './layouts'
 
 function App() {
 
   return (
     <>
-      <main className='bg-medium-grey w-full h-[100vh]'>hola mundo</main>
+      <main className='bg-medium-grey w-full h-[100vh]'>
+        <GithubSearchBarHeader />
+      </main>
     </>
   )
 }
