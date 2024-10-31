@@ -7,9 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        "main": "#20293A",
         "medium-grey": "#364153",
         "light-grey": "#CDD5E0",
-        "custom-blue": "#3662E3"
+        "custom-blue": "#3662E3",
+        "dark-gray": "#20293A"
       },
       backgroundImage: {
         searchBarBackground: "url('./assets/images/searchBarBackground.png')"
