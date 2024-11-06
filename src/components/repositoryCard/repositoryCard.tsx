@@ -1,0 +1,19 @@
+import { FC } from "react";
+
+export const RepositoryCard: FC = () => {
+  const textDescription = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem consequatur quis corrupti corporis fuga similique neque repellat repudiandae deleniti, libero cumque nesciunt eius architecto necessitatibus officiis assumenda facere rem enim"
+    
+    return (
+        <article className="w-full max-w-[450px] h-auto rounded-2xl bg-gradient-to-r min-h-[150px] from-[#111729] to-[#1D1B48] p-4 flex flex-col justify-between">
+            <span className="text-light-grey font-bold  text-[18px] leading-[22px]">.Repo</span>
+            <p className="text-light-grey text-base">{textDescription.substring(0, 100)}...</p>
+
+            <div>
+                <span>MIT</span>
+                <span>2,369</span>
+                <span>434</span>
+                <span>updated 4 days ago</span>
+            </div>
+        </article>
+    )
+}
