@@ -19,7 +19,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+
+    /* Others */
+    "extends": "./tsconfig.json",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
   },
   "include": ["src"]
 }
