@@ -1,5 +1,5 @@
-import { FC } from "react"
-import { InformationLabel } from "../../components"
+import React, { FC } from "react"
+import { InformationLabel } from "@/components"
 import { Images } from "../../assets/media"
 
 export const GithubInformationLayout: FC = () => {
