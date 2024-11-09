@@ -7,20 +7,23 @@ export const RepositoryCard: FC = () => {
     'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem consequatur quis corrupti corporis fuga similique neque repellat repudiandae deleniti, libero cumque nesciunt eius architecto necessitatibus officiis assumenda facere rem enim'
 
   return (
-    <article className="w-full max-w-[450px] h-auto rounded-2xl bg-gradient-to-r min-h-[150px] from-[#111729] to-[#1D1B48] p-4 flex flex-col justify-between">
+    <article className="w-full max-w-[500px] h-auto rounded-2xl bg-gradient-to-r min-h-[180px] from-[#111729] to-[#1D1B48] p-4 flex flex-col justify-between">
       <span className="text-light-grey font-bold  text-[18px] leading-[22px]">.Repo</span>
-      <p className="text-light-grey text-base opacity-70">{textDescription.substring(0, 100)}...</p>
+      <p className="text-light-grey text-base opacity-90 line-clamp-2">{textDescription}</p>
 
-      <div className="text-light-grey">
-        <span>
+      <div className="text-light-grey flex items-center w-full gap-4">
+        <span className="flex items-center gap-1 text-lg">
           <Icon src={Icons.chieldIcon} /> MIT
         </span>
-        <span>
+        <span className="flex items-center gap-1 text-lg">
           <Icon src={Icons.nestingIcon} />
           2,369
         </span>
-        <span>434</span>
-        <span>updated 4 days ago</span>
+        <span className="flex items-center gap-1 text-lg">
+          <Icon src={Icons.startIcon} />
+          434
+        </span>
+        <span className="text-sm">updated 4 days ago</span>
       </div>
     </article>
   )
