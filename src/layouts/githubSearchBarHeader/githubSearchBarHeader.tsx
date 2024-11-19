@@ -1,9 +1,14 @@
 import { FC, useState } from 'react'
 import clsx from 'clsx'
-import { Icons } from '../../assets/media'
+import { Icons } from '@/assets/media'
+import { useQuery } from 'react-query'
+import { getGithubUser } from '@/api'
 
 export const GithubSearchBarHeader: FC = () => {
   const [isInputFocus, setIsInputFocus] = useState(false)
+
+  const { data } = useQuery(['GET_GITHUB_USERS'], () => getGithubUser('devRony1710'))
+  console.log('🚀 ~ data:', data)
 
   const handleFocusInput = (): void => {
     setIsInputFocus(true)
