@@ -1,7 +1,10 @@
+import { GithubUserInterface } from '@/utils'
+
 export interface GithubSearchBarHeaderProps {
   handleFocusInput: () => void
   handleBlurInput: () => void
   isInputFocus: boolean
   handleOnChange: (value: string) => void
-  searchValue: string
+  isSearchingResults: boolean
+  userData: GithubUserInterface | undefined
 }
