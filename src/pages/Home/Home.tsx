@@ -1,6 +1,7 @@
-import { getGithubUser } from '@/api'
+import { getGithubRepositories, getGithubUser } from '@/api'
 import { useDebounce } from '@/hooks'
 import { GithubInformationLayout, GithubRepositories, GithubSearchBarHeader } from '@/layouts'
+import { RequestKey } from '@/utils'
 import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
 
@@ -12,7 +13,18 @@ export const Home: FC = () => {
   const { data } = useQuery(['GET_GITHUB_USERS', debounceSearchValue.debounceValue], () => getGithubUser(debounceSearchValue.debounceValue), {
     enabled: debounceSearchValue.debounceValue !== '',
   })
-  console.log('🚀 ~ const{data}=useQuery ~ data:', data)
+
+  const { data: repositoriesData } = useQuery(
+    [RequestKey.GET_REPOSITORIE_KEYS],
+    () =>
+      getGithubRepositories({
+        userName: debounceSearchValue.debounceValue,
+      }),
+    {
+      enabled: debounceSearchValue.debounceValue !== '' && data !== null,
+    }
+  )
+  console.log('🚀 ~ repositoriesData:', repositoriesData)
 
   const handleFocusInput = (): void => {
     setIsInputFocus(true)
