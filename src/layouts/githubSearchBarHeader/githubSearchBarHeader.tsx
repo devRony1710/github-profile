@@ -4,7 +4,7 @@ import { Icons } from '@/assets/media'
 import { GithubSearchBarHeaderProps } from './githubSearchBarHeader.types'
 import { UserDropdownCompleteState } from '@/components'
 
-export const GithubSearchBarHeader: FC<GithubSearchBarHeaderProps> = ({ handleBlurInput, handleFocusInput, isInputFocus, handleOnChange, isSearchingResults, userData }) => {
+export const GithubSearchBarHeader: FC<GithubSearchBarHeaderProps> = ({ handleBlurInput, handleFocusInput, isInputFocus, handleOnChange, isSearchingResults, userData, userImage, quote, userName }) => {
   console.log('🚀 ~ userData:', userData)
   return (
     <section className="w-full h-[300px] bg-left bg-cover md:bg-cover bg-no-repeat bg-searchBarBackground flex items-center justify-center">
@@ -14,7 +14,7 @@ export const GithubSearchBarHeader: FC<GithubSearchBarHeaderProps> = ({ handleBl
 
         {isSearchingResults && (
           <div className="absolute top-16 -left-1 w-[400px] h-[100px] py-3 px-2 bg-main rounded-2xl">
-            <UserDropdownCompleteState />
+            <UserDropdownCompleteState userImage={userImage} quote={quote} userName={userName} />
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
-import { getGithubUser } from '@/api'
+import { getGithubRepositories, getGithubUser } from '@/api'
 import { useDebounce } from '@/hooks'
 import { GithubInformationLayout, GithubRepositories, GithubSearchBarHeader } from '@/layouts'
+import { RequestKey } from '@/utils'
 import { FC, useState } from 'react'
 import { useQuery } from 'react-query'
 
@@ -12,7 +13,18 @@ export const Home: FC = () => {
   const { data } = useQuery(['GET_GITHUB_USERS', debounceSearchValue.debounceValue], () => getGithubUser(debounceSearchValue.debounceValue), {
     enabled: debounceSearchValue.debounceValue !== '',
   })
-  console.log('🚀 ~ const{data}=useQuery ~ data:', data)
+
+  const { data: repositoriesData } = useQuery(
+    [RequestKey.GET_REPOSITORIE_KEYS],
+    () =>
+      getGithubRepositories({
+        userName: debounceSearchValue.debounceValue,
+      }),
+    {
+      enabled: debounceSearchValue.debounceValue !== '' && data !== null,
+    }
+  )
+  console.log('🚀 ~ repositoriesData:', repositoriesData)
 
   const handleFocusInput = (): void => {
     setIsInputFocus(true)
@@ -27,7 +39,17 @@ export const Home: FC = () => {
   }
   return (
     <main className="bg-main w-full h-full">
-      <GithubSearchBarHeader userData={data} isSearchingResults={searchValue !== ''} handleOnChange={handleSearchValue} handleBlurInput={handleBlurInput} handleFocusInput={handleFocusInput} isInputFocus={isInputFocus} />
+      <GithubSearchBarHeader
+        userImage={data?.avatar_url as string}
+        userData={data}
+        isSearchingResults={searchValue !== ''}
+        handleOnChange={handleSearchValue}
+        handleBlurInput={handleBlurInput}
+        handleFocusInput={handleFocusInput}
+        isInputFocus={isInputFocus}
+        quote={`${data?.bio.slice(0, 30)}...` as string}
+        userName={data?.name as string}
+      />
       <GithubInformationLayout />
       <GithubRepositories />
     </main>

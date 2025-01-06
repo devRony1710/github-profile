@@ -12,7 +12,7 @@ export const RepositoryCard: FC<RepositoryCardProps> = ({ value, nombre }) => {
       <span className="text-light-grey font-bold  text-[18px] leading-[22px]">{nombre}</span>
       <p className="text-light-grey text-base opacity-90 line-clamp-2">{textDescription}</p>
 
-      <div className="text-light-grey flex flex flex-wrap items-center w-full gap-2">
+      <div className="text-light-grey flex flex-wrap items-center w-full gap-2">
         <span className="flex items-center gap-1 text-lg">
           <Icon src={Icons.chieldIcon} /> MIT
         </span>
