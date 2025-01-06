@@ -7,4 +7,5 @@ export interface GithubSearchBarHeaderProps {
   handleOnChange: (value: string) => void
   isSearchingResults: boolean
   userData: GithubUserInterface | undefined
+  userImage: string
 }

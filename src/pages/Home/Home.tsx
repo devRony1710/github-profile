@@ -39,7 +39,15 @@ export const Home: FC = () => {
   }
   return (
     <main className="bg-main w-full h-full">
-      <GithubSearchBarHeader userData={data} isSearchingResults={searchValue !== ''} handleOnChange={handleSearchValue} handleBlurInput={handleBlurInput} handleFocusInput={handleFocusInput} isInputFocus={isInputFocus} />
+      <GithubSearchBarHeader
+        userImage={data?.avatar_url as string}
+        userData={data}
+        isSearchingResults={searchValue !== ''}
+        handleOnChange={handleSearchValue}
+        handleBlurInput={handleBlurInput}
+        handleFocusInput={handleFocusInput}
+        isInputFocus={isInputFocus}
+      />
       <GithubInformationLayout />
       <GithubRepositories />
     </main>
