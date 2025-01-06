@@ -47,6 +47,8 @@ export const Home: FC = () => {
         handleBlurInput={handleBlurInput}
         handleFocusInput={handleFocusInput}
         isInputFocus={isInputFocus}
+        quote={`${data?.bio.slice(0, 30)}...` as string}
+        userName={data?.name as string}
       />
       <GithubInformationLayout />
       <GithubRepositories />
