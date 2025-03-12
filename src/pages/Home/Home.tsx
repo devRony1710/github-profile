@@ -10,10 +10,10 @@ export const Home: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const debounceSearchValue = useDebounce(searchValue, 500)
 
-  const { data } = useQuery([RequestKey.GET_GITHUB_USER, debounceSearchValue.debounceValue], () => getGithubUser(debounceSearchValue.debounceValue), {
+  const { data: userData } = useQuery([RequestKey.GET_GITHUB_USER, debounceSearchValue.debounceValue], () => getGithubUser(debounceSearchValue.debounceValue), {
     enabled: debounceSearchValue.debounceValue !== '',
   })
-  console.log('🚀 ~ const{data}=useQuery ~ data:', data)
+  console.log('🚀 ~ const{data}=useQuery ~ data:', userData)
 
   const { data: repositoriesData } = useQuery(
     [RequestKey.GET_REPOSITORIES],
@@ -22,7 +22,7 @@ export const Home: FC = () => {
         userName: debounceSearchValue.debounceValue,
       }),
     {
-      enabled: debounceSearchValue.debounceValue !== '' && data !== null,
+      enabled: debounceSearchValue.debounceValue !== '' && userData !== null,
     }
   )
 
@@ -42,17 +42,17 @@ export const Home: FC = () => {
   return (
     <main className="bg-main w-full h-full">
       <GithubSearchBarHeader
-        userImage={data?.avatar_url as string}
-        userData={data}
+        userImage={userData?.avatar_url as string}
+        userData={userData}
         isSearchingResults={searchValue !== ''}
         handleOnChange={handleSearchValue}
         handleBlurInput={handleBlurInput}
         handleFocusInput={handleFocusInput}
         isInputFocus={isInputFocus}
-        quote={`${data?.bio.slice(0, 30)}...` as string}
-        userName={data?.name as string}
+        quote={`${userData?.bio.slice(0, 30)}...` as string}
+        userName={userData?.name as string}
       />
-      <GithubInformationLayout />
+      <GithubInformationLayout numberOfFollowers={userData?.followers} numberOfFollowing={userData?.following} location={userData?.location} />
       <GithubRepositories />
     </main>
   )
