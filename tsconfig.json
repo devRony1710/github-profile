@@ -5,11 +5,12 @@
     "jsxImportSource": "react",
     "types": ["node"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "undici-types": ["./node_modules/undici/types"]
     },
     "module": "ESNext",
     "target": "ESNext"
   },
   "include": ["src"],
- "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
