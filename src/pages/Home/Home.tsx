@@ -10,12 +10,13 @@ export const Home: FC = () => {
   const [searchValue, setSearchValue] = useState('')
   const debounceSearchValue = useDebounce(searchValue, 500)
 
-  const { data } = useQuery(['GET_GITHUB_USERS', debounceSearchValue.debounceValue], () => getGithubUser(debounceSearchValue.debounceValue), {
+  const { data } = useQuery([RequestKey.GET_GITHUB_USER, debounceSearchValue.debounceValue], () => getGithubUser(debounceSearchValue.debounceValue), {
     enabled: debounceSearchValue.debounceValue !== '',
   })
+  console.log('🚀 ~ const{data}=useQuery ~ data:', data)
 
   const { data: repositoriesData } = useQuery(
-    [RequestKey.GET_REPOSITORIE_KEYS],
+    [RequestKey.GET_REPOSITORIES],
     () =>
       getGithubRepositories({
         userName: debounceSearchValue.debounceValue,
@@ -24,6 +25,7 @@ export const Home: FC = () => {
       enabled: debounceSearchValue.debounceValue !== '' && data !== null,
     }
   )
+
   console.log('🚀 ~ repositoriesData:', repositoriesData)
 
   const handleFocusInput = (): void => {
