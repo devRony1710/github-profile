@@ -1,21 +1,13 @@
 import { FC } from 'react'
-import { RepositoryCard } from '@/components'
+import { EmptyState, RepositoryCard } from '@/components'
 import { GithubRepositoriesProps } from './githubRepositories.types'
-import { Images } from '@/assets/media'
+import { EMPTY_STATE_DESCRIPTION_REPOSITORIES, EMPTY_STATE_TITLE_REPOSITORIES } from '@/utils/constants/layoutStrings'
 
 export const GithubRepositories: FC<GithubRepositoriesProps> = ({ repositoriesData }) => {
   const isNotDataAvailable = repositoriesData.length === 0
 
   if (isNotDataAvailable) {
-    return (
-      <section className="h-full min-h-[550px] w-full flex items-center justify-center flex-col pb-10">
-        <img className="h-[450px] w-[450px] object-cover" src={Images.emptyStateRepositories} alt="Without repositories to show" />
-        <div className="w-full flex flex-col gap-4 items-center">
-          <span className="text-white font-bold text-2xl">No se encontraron repositorios</span>
-          <p className="text-white font-medium text-base">Parece que no hay repositorios disponibles. Intenta buscar otro usuario o verifica que el nombre sea correcto.</p>
-        </div>
-      </section>
-    )
+    return <EmptyState title={EMPTY_STATE_TITLE_REPOSITORIES} description={EMPTY_STATE_DESCRIPTION_REPOSITORIES} />
   }
 
   return (
