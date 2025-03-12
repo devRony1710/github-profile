@@ -53,7 +53,7 @@ export const Home: FC = () => {
         userName={userData?.name as string}
       />
       <GithubInformationLayout numberOfFollowers={userData?.followers} numberOfFollowing={userData?.following} location={userData?.location} />
-      <GithubRepositories />
+      <GithubRepositories repositoriesData={[]} />
     </main>
   )
 }

@@ -6,14 +6,16 @@ import NestingIcon from './icons/Nesting.svg'
 
 // images
 import GithubLogo from './images/github-mark-white.png'
+import EmptyStateRepositories from './images/empty-state-repositories.png'
 
 export const Icons = {
-    searchIcon: SearchIcon,
-    startIcon: StartIcon,
-    chieldIcon: ChieldIcon,
-    nestingIcon: NestingIcon,
+  searchIcon: SearchIcon,
+  startIcon: StartIcon,
+  chieldIcon: ChieldIcon,
+  nestingIcon: NestingIcon,
 }
 
 export const Images = {
-    githubLogo: GithubLogo
+  githubLogo: GithubLogo,
+  emptyStateRepositories: EmptyStateRepositories,
 }
